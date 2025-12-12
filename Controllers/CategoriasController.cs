@@ -32,5 +32,8 @@ namespace projetotecnico.Controllers
             await _context.SaveChangesAsync();
             return Ok(categoria);
         }
+        
     }
+      
 }
+

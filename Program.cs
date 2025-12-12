@@ -2,16 +2,28 @@ using Microsoft.EntityFrameworkCore;
 using projetotecnico.Data;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-// --- Registra Controllers ---
+// Add services
 builder.Services.AddControllers();
 
-// --- Registra Swagger ---
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// --- Registra o banco MySQL ---
+// CORS - permitir front durante desenvolvimento
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", policy =>
+    {
+        policy.AllowAnyHeader()
+              .AllowAnyMethod()
+              .WithOrigins("http://localhost:5173"); // porta do Vite
+    });
+});
+
+// DB (MySQL) - usa connection string em appsettings.json
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -21,16 +33,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// --- Configuração Swagger ---
+// Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowLocalhost");
+
 app.UseHttpsRedirection();
 
-// --- Ativa Controllers ---
 app.MapControllers();
 
 app.Run();

@@ -1,19 +1,18 @@
+import React from "react";
 import Header from "../components/Header";
 import PessoaForm from "../components/PessoaForm";
 import PessoaList from "../components/PessoaList";
 
-export default function PessoasPage() {
+export default function PessoasPage(){
   return (
     <>
       <Header />
-      <div className="container">
-        <h1>Cadastro de Pessoas</h1>
-
-        <PessoaForm />
-
-        <h3>Pessoas cadastradas</h3>
-        <PessoaList />
-      </div>
+      <main className="container mt-4">
+        <div className="row gx-3">
+          <div className="col-md-4"><PessoaForm/></div>
+          <div className="col-md-8"><PessoaList/></div>
+        </div>
+      </main>
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container">
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Link to="/" className="brand" style={{ textDecoration: "none" }}>GastosResidenciais</Link>
-          <span className="small-muted" style={{ fontSize: 13, color: "#6b7280" }}>Controle simples e profissional</span>
+          <span className="small-muted" style={{ fontSize: 13, color: "#16336eff" }}>Controle simples e profissional</span>
         </div>
 
         <nav className="nav" aria-label="Main navigation">

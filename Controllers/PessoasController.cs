@@ -10,13 +10,8 @@ namespace projetotecnico.Controllers
     public class PessoasController : ControllerBase
     {
         private readonly AppDbContext _context;
+        public PessoasController(AppDbContext context) => _context = context;
 
-        public PessoasController(AppDbContext context)
-        {
-            _context = context;
-        }
-
-        // GET api/pessoas
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -24,42 +19,31 @@ namespace projetotecnico.Controllers
             return Ok(pessoas);
         }
 
-        // GET api/pessoas/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var pessoa = await _context.Pessoas
-                .Include(p => p.Transacoes)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
+            var pessoa = await _context.Pessoas.Include(p => p.Transacoes).FirstOrDefaultAsync(p => p.Id == id);
             if (pessoa == null) return NotFound();
-
             return Ok(pessoa);
         }
 
-        // POST api/pessoas
         [HttpPost]
-        public async Task<IActionResult> Create(Pessoa pessoa)
+        public async Task<IActionResult> Create([FromBody] Pessoa pessoa)
         {
+            if (string.IsNullOrWhiteSpace(pessoa.Nome) || pessoa.Idade <= 0)
+                return BadRequest("Nome e idade válidos são obrigatórios.");
             _context.Pessoas.Add(pessoa);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetById), new { id = pessoa.Id }, pessoa);
         }
 
-        // DELETE api/pessoas/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var pessoa = await _context.Pessoas
-                .Include(p => p.Transacoes)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
+            var pessoa = await _context.Pessoas.Include(p => p.Transacoes).FirstOrDefaultAsync(p => p.Id == id);
             if (pessoa == null) return NotFound();
-
-            _context.Pessoas.Remove(pessoa);
+            _context.Pessoas.Remove(pessoa); // cascade delete via FK
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

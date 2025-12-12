@@ -133,3 +133,4 @@
 /home/alexandra/Documentos/projetotecnico/bin/Debug/net8.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/alexandra/Documentos/projetotecnico/bin/Debug/net8.0/MySqlConnector.dll
 /home/alexandra/Documentos/projetotecnico/bin/Debug/net8.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/alexandra/Documentos/projetotecnico/obj/Debug/net8.0/projetotecnico.sourcelink.json
