@@ -140,14 +140,26 @@ Ao final da listagem, apresenta:
 ### Pré-requisitos
 
 * .NET SDK 8
-* Node.js + NPM
 * Git
 * MySQL ou MariaDB
 
+## Banco de Dados
+```bash
+dotnet tool install --global dotnet-ef --version 8.*
+export PATH="$PATH:$HOME/.dotnet/tools"
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo mysql < back-end/database/setup.sql
+(digitar senha da conexão com o banco de dados)
+cd back-end
+dotnet ef database update
+```
 ### Execução do Backend (.NET)
 
 ```bash
-cd backend
+cd back-end
 dotnet restore
 dotnet run
 ```
@@ -155,7 +167,7 @@ dotnet run
 ### Execução do Frontend (React + TypeScript)
 
 ```bash
-cd frontend
+cd front-end
 npm install
 npm run dev
 ```
