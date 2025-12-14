@@ -159,6 +159,14 @@ cd frontend
 npm install
 npm run dev
 ```
+## Banco de Dados
+
+Dentro da pasta `backend` execute:
+
+```bash
+dotnet ef database update
+
+
 
 ---
 
