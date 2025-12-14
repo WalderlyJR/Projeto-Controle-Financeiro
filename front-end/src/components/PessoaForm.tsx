@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { apiPost } from "../api/api";
 import type { Pessoa } from "../types/Pessoa";
 
+//componente formulário para adicionar pessoa
 export default function PessoaForm() {
   const [nome, setNome] = useState("");
   const [idade, setIdade] = useState<number | "">("");

@@ -15,7 +15,7 @@ namespace projetotecnico.Controllers
             _context = context;
         }
 
-        //  /relatorios/pessoas
+        // relatorios por pessoa
         [HttpGet("pessoas")]
 public async Task<IActionResult> PorPessoa()
 {
@@ -48,7 +48,7 @@ public async Task<IActionResult> PorPessoa()
 }
 
 
-        // relatorios/categorias
+        // relatorios por categoria
      [HttpGet("categorias")]
 public async Task<IActionResult> PorCategoria()
 {

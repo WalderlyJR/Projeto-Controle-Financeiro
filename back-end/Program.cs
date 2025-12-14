@@ -5,7 +5,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+// Adicionando serviços ao contêiner
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -13,22 +13,22 @@ builder.Services.AddControllers()
     });
 
 
-// Swagger
+// Consumir api com Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// CORS - permitir front durante desenvolvimento
+// CORS conexão front-end 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
     {
         policy.AllowAnyHeader()
               .AllowAnyMethod()
-              .WithOrigins("http://localhost:5173"); // porta do Vite
+              .WithOrigins("http://localhost:5173"); // porta do front-end
     });
 });
 
-// DB (MySQL) - usa connection string em appsettings.json
+// DB (MySQL) - usa a conexão do appsettings.json
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -38,7 +38,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Pipeline
+// Configuração do pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

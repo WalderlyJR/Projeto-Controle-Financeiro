@@ -20,6 +20,7 @@ function withLayout(page: React.ReactNode) {
   );
 }
 
+//definição das rotas da aplicação
 export const router = createBrowserRouter([
   {
     path: "/",

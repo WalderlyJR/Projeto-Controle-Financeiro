@@ -1,5 +1,6 @@
 namespace projetotecnico.Models
 {
+    // Integração com o banco de dados para pessoas
     public class Pessoa
     {
         public int Id { get; set; }

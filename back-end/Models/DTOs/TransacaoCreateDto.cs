@@ -1,5 +1,6 @@
 namespace projetotecnico.Models.DTOs
 {
+    //Integração com o banco de dados para criação de transações
     public class TransacaoCreateDto
     {
         public string Descricao { get; set; }

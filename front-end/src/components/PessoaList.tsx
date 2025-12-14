@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { apiGet, apiDelete } from "../api/api";
 import type { Pessoa } from "../types/Pessoa";
 
+//componente lista de pessoas 
 export default function PessoaList() {
   const [pessoas, setPessoas] = useState<Pessoa[]>([]);
   const [loading, setLoading] = useState(false);
 
+  //função para carregar pessoas
   async function load() {
     setLoading(true);
     try {
@@ -24,6 +26,7 @@ export default function PessoaList() {
     return ()=> window.removeEventListener("pessoas:changed", h);
   }, []);
 
+   //função para remover pessoa
   async function remover(id:number) {
     if (!confirm("Confirma exclusão?")) return;
     try {

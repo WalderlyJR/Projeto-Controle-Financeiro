@@ -16,7 +16,7 @@ namespace projetotecnico.Controllers
             _context = context;
         }
 
-        // GET api/categorias
+        // listando todas as categorias
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -24,7 +24,7 @@ namespace projetotecnico.Controllers
             return Ok(categorias);
         }
 
-        // POST api/categorias
+        // criando uma nova categoria
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Categoria categoria)
         {

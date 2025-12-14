@@ -5,6 +5,7 @@ import type { Categoria } from "../types/Categoria";
 import type { Pessoa } from "../types/Pessoa";
 import { apiGet, apiPost } from "../api/api";
 
+//componente página de transações
 export default function TransacoesPage(){
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState<number | "">("");
@@ -15,7 +16,7 @@ export default function TransacoesPage(){
   const [pessoas, setPessoas] = useState<Pessoa[]>([]);
   const [lista, setLista] = useState<Transacao[]>([]);
 
- 
+ //Listagem de transações, pessoas e categorias
   async function loadAll(){
     try {
       const [c, p, t] = await Promise.all([
@@ -30,6 +31,7 @@ export default function TransacoesPage(){
   }
   useEffect(()=>{ loadAll(); }, []);
 
+   //função para salvar transação
   async function salvar(e?:React.FormEvent){
     e?.preventDefault();
     if(!descricao || valor === "" || pessoaId === "" || categoriaId === "") return alert("Preencha todos os campos");
@@ -123,7 +125,7 @@ export default function TransacoesPage(){
               </form>
             </div>
           </div>
-
+           
           <div className="col-md-8">
             <div className="card p-3">
               <h5>Transações</h5>

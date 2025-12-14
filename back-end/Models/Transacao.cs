@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace projetotecnico.Models
 {
+    // Integração com o banco de dados para transações com categorias e pessoas
     public class Transacao
     {
         public int Id { get; set; }

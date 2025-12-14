@@ -7,6 +7,7 @@ import type {
   ReportCats
 } from "../types/Relatorios";
 
+//componente página de relatórios
 export default function RelatoriosPage() {
   const [reportPeople, setReportPeople] = useState<ReportPeople | null>(null);
   const [reportCats, setReportCats] = useState<ReportCats | null>(null);

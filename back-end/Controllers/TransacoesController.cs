@@ -16,7 +16,7 @@ namespace projetotecnico.Controllers
             _context = context;
         }
 
-        // GET api/transacoes
+        // listando todas as transacoes
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -28,7 +28,7 @@ namespace projetotecnico.Controllers
             return Ok(lista);
         }
 
-        // POST api/transacoes
+        // criando uma nova transacao
         
 [HttpPost]
 public async Task<IActionResult> Create([FromBody] TransacaoCreateDto dto)

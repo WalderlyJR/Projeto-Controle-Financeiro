@@ -11,14 +11,16 @@ namespace projetotecnico.Controllers
     {
         private readonly AppDbContext _context;
         public PessoasController(AppDbContext context) => _context = context;
-
+        
+        // listando todas as pessoas
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var pessoas = await _context.Pessoas.ToListAsync();
             return Ok(pessoas);
         }
-
+        
+        // obtendo pessoa por id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -27,6 +29,7 @@ namespace projetotecnico.Controllers
             return Ok(pessoa);
         }
 
+        // criando uma nova pessoa
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Pessoa pessoa)
         {
@@ -36,7 +39,8 @@ namespace projetotecnico.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = pessoa.Id }, pessoa);
         }
-
+        
+        // deletando uma pessoa
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

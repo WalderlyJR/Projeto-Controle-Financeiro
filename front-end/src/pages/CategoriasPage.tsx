@@ -4,12 +4,14 @@ import Header from "../components/Header";
 import { apiGet, apiPost } from "../api/api";
 import type { Categoria } from "../types/Categoria";
 
+//componente página de categorias
 export default function CategoriasPage(){
   const [descricao, setDescricao] = useState("");
   const [finalidade, setFinalidade] = useState<Categoria["finalidade"]>("despesa");
   const [items, setItems] = useState<Categoria[]>([]);
   const isMountedRef = useRef(true);
 
+   //função para carregar categorias
   async function load() {
     try {
       const d = await apiGet<Categoria[]>("categorias");
@@ -21,7 +23,7 @@ export default function CategoriasPage(){
 
   useEffect(() => {
     isMountedRef.current = true;
-    // call load asynchronously to avoid triggering setState synchronously within the effect
+    
     const init = async () => {
       await load();
     };
@@ -29,6 +31,7 @@ export default function CategoriasPage(){
     return () => { isMountedRef.current = false; };
   }, []);
 
+    //função para salvar categoria
   async function salvar(e?:React.FormEvent){
     e?.preventDefault();
     if(!descricao) return alert("Informe a descrição");

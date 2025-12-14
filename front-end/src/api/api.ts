@@ -1,5 +1,7 @@
+//conexão com a api back-end
 const API_URL = (import.meta.env.VITE_API_URL as string) || "http://localhost:5116/api";
 
+// Função para lidar com a resposta da API
 async function handleRes(res: Response) {
   if (!res.ok) {
     const txt = await res.text().catch(()=>res.statusText);
@@ -10,11 +12,13 @@ async function handleRes(res: Response) {
   return null;
 }
 
+// Funções para fazer requisições GET, POST e DELETE
 export async function apiGet<T>(endpoint: string): Promise<T> {
   const res = await fetch(`${API_URL}/${endpoint}`);
   return handleRes(res) as Promise<T>;
 }
 
+// Função para fazer requisições POST
 export async function apiPost<T>(endpoint: string, data: T): Promise<T> {
   const res = await fetch(`${API_URL}/${endpoint}`, {
     method: "POST",
@@ -24,6 +28,7 @@ export async function apiPost<T>(endpoint: string, data: T): Promise<T> {
   return handleRes(res) as Promise<T>;
 }
 
+// Função para fazer requisições DELETE
 export async function apiDelete(endpoint: string) {
   const res = await fetch(`${API_URL}/${endpoint}`, { method: "DELETE" });
   return handleRes(res);

@@ -1,6 +1,7 @@
 import PessoaForm from "../components/PessoaForm";
 import PessoaList from "../components/PessoaList";
 
+//componente página de pessoas
 export default function PessoasPage() {
   return (
     <>

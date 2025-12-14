@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+//componente header do site
 export default function Header() {
   const [open, setOpen] = useState(false);
-
+ 
   return (
     <header className="header">
       <div className="container header-content">

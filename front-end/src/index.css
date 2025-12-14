@@ -1,3 +1,4 @@
+/* global styles */
 :root{
   --brand: #4f46e5; /* indigo-600 */
   --accent: #0ea5e9; /* sky */
@@ -44,7 +45,6 @@ html,body,#root { height: 100%; margin: 0; padding: 0; background: var(--bg); co
   padding: 0 16px;
 }
 
-/* hero */
 .hero {
   background: linear-gradient(90deg, rgba(79,70,229,0.06), rgba(14,165,233,0.02));
   border-radius: var(--radius);
@@ -68,18 +68,18 @@ html,body,#root { height: 100%; margin: 0; padding: 0; background: var(--bg); co
 .grid { display:grid; gap: 16px; }
 .grid.cols-2 { grid-template-columns: 1fr 1fr; }
 
-/* table */
+/* tabela */
 .table { width:100%; border-collapse:collapse; }
 .table th, .table td { padding: 10px 8px; border-bottom: 1px solid #eef2f7; text-align:left; }
 .table thead th { color: var(--muted); font-size: 12px; text-transform:uppercase; }
 
-/* forms/buttons */
+/* forma/butões*/
 .form-control { border-radius: 8px; padding: 10px 12px; border: 1px solid #e6e7eb; width:100%; }
 .btn { border-radius: 8px; padding: 8px 12px; font-weight:600; cursor:pointer; border:0; }
 .btn-primary { background: var(--brand); color: white; }
 .btn-ghost { background: transparent; border: 1px solid #e6e7eb; color: var(--muted); }
 
-/* small responsive */
+/*  responsive */
 @media (max-width: 900px) {
   .hero { flex-direction: column; text-align:center; }
   .grid.cols-2 { grid-template-columns: 1fr; }
@@ -93,7 +93,7 @@ html,body,#root { height: 100%; margin: 0; padding: 0; background: var(--bg); co
 .container {
   max-width: var(--container-max);
   margin: 0 auto 48px;
-  padding: 50px; /* 👈 empurra abaixo do menu */
+  padding: 50px; 
 }
 .header {
   background: #0f172a;
@@ -212,7 +212,7 @@ html,body,#root { height: 100%; margin: 0; padding: 0; background: var(--bg); co
     padding: 6px 8px;
   }
 
-  /* Total Geral mais bonito no mobile */
+  /* Total Geral mobile */
   .card > div:last-child {
     font-size: 13px;
     line-height: 1.4;
@@ -236,7 +236,7 @@ html,body,#root { height: 100%; margin: 0; padding: 0; background: var(--bg); co
   -webkit-overflow-scrolling: touch;
 }
 
-/* evita que a tabela estoure */
+/* Ajusta a tabela na versão mobile*/
 .table {
   min-width: 520px;
   white-space: nowrap;
