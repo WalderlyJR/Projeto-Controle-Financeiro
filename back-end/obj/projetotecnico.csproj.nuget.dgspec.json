@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/alexandra/Documentos/projetotecnicoo/back-end/projetotecnico.csproj": {}
+    "/home/alexandra/Documentos/projetotecnico/back-end/projetotecnico.csproj": {}
   },
   "projects": {
-    "/home/alexandra/Documentos/projetotecnicoo/back-end/projetotecnico.csproj": {
+    "/home/alexandra/Documentos/projetotecnico/back-end/projetotecnico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alexandra/Documentos/projetotecnicoo/back-end/projetotecnico.csproj",
+        "projectUniqueName": "/home/alexandra/Documentos/projetotecnico/back-end/projetotecnico.csproj",
         "projectName": "projetotecnico",
-        "projectPath": "/home/alexandra/Documentos/projetotecnicoo/back-end/projetotecnico.csproj",
+        "projectPath": "/home/alexandra/Documentos/projetotecnico/back-end/projetotecnico.csproj",
         "packagesPath": "/home/alexandra/.nuget/packages/",
-        "outputPath": "/home/alexandra/Documentos/projetotecnicoo/back-end/obj/",
+        "outputPath": "/home/alexandra/Documentos/projetotecnico/back-end/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/alexandra/.nuget/NuGet/NuGet.Config"

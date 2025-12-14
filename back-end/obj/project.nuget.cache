@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S5M6Z57eVxWsKwcW/SNZHtjvESqDuBbJ4q/q/QbleotVMksezhWzO/v+gSiyaqPQk7It9duMFLVWm6O8TdB8Ew==",
+  "dgSpecHash": "RStgD2ibWNtap94CuogzrW3pQ0EC2wUBDihQPk0p/Nzm3I/RxiYZ5mPzUGOwOrmOcO/MQ4A2SsvIZh0fodd2dQ==",
   "success": true,
-  "projectFilePath": "/home/alexandra/Documentos/projetotecnicoo/back-end/projetotecnico.csproj",
+  "projectFilePath": "/home/alexandra/Documentos/projetotecnico/back-end/projetotecnico.csproj",
   "expectedPackageFiles": [
     "/home/alexandra/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/alexandra/.nuget/packages/microsoft.aspnetcore.openapi/8.0.21/microsoft.aspnetcore.openapi.8.0.21.nupkg.sha512",
