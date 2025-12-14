@@ -15,6 +15,7 @@ export default function TransacoesPage(){
   const [pessoas, setPessoas] = useState<Pessoa[]>([]);
   const [lista, setLista] = useState<Transacao[]>([]);
 
+ 
   async function loadAll(){
     try {
       const [c, p, t] = await Promise.all([
@@ -126,6 +127,10 @@ export default function TransacoesPage(){
           <div className="col-md-8">
             <div className="card p-3">
               <h5>Transações</h5>
+              <div className="scroll-icon d-md-none">
+               ⇆ deslize para ver mais
+                </div>
+              <div className="table-responsive">
               <table className="table table-striped">
                 <thead><tr><th>Descrição</th><th>Valor</th><th>Tipo</th><th>Pessoa</th><th>Categoria</th></tr></thead>
                 <tbody>
@@ -141,6 +146,7 @@ export default function TransacoesPage(){
                   {lista.length===0 && <tr><td colSpan={5}>Sem transações</td></tr>}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>

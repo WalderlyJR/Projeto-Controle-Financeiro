@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using projetotecnico.Data;
 using projetotecnico.Models;
-
+using projetotecnico.Models.DTOs;
 namespace projetotecnico.Controllers
 {
     [ApiController]
@@ -29,39 +29,48 @@ namespace projetotecnico.Controllers
         }
 
         // POST api/transacoes
-        [HttpPost]
-        public async Task<IActionResult> Create(Transacao transacao)
-        {
-            // Verificar se pessoa existe
-            var pessoa = await _context.Pessoas.FindAsync(transacao.PessoaId);
-            if (pessoa == null)
-                return BadRequest("Pessoa não encontrada.");
+        
+[HttpPost]
+public async Task<IActionResult> Create([FromBody] TransacaoCreateDto dto)
+{
+    if (!ModelState.IsValid)
+        return BadRequest(ModelState);
 
-            // Verificar se categoria existe
-            var categoria = await _context.Categorias.FindAsync(transacao.CategoriaId);
-            if (categoria == null)
-                return BadRequest("Categoria não encontrada.");
+    var pessoa = await _context.Pessoas.FindAsync(dto.PessoaId);
+    if (pessoa == null)
+        return BadRequest("Pessoa não encontrada.");
 
-            // Regra 1: Menor de idade só pode ter DESPESA
-            if (pessoa.Idade < 18 && transacao.Tipo == "receita")
-                return BadRequest("Menor de idade só pode registrar despesas.");
+    var categoria = await _context.Categorias.FindAsync(dto.CategoriaId);
+    if (categoria == null)
+        return BadRequest("Categoria não encontrada.");
 
-            // Regra 2: Categoria deve respeitar sua finalidade
-            if (transacao.Tipo == "despesa" && categoria.Finalidade == "receita")
-                return BadRequest("Categoria não permite transações de despesas.");
+    if (pessoa.Idade < 18 && dto.Tipo == "receita")
+        return BadRequest("Menor de idade só pode registrar despesas.");
 
-            if (transacao.Tipo == "receita" && categoria.Finalidade == "despesa")
-                return BadRequest("Categoria não permite transações de receitas.");
+    if (dto.Tipo == "despesa" && categoria.Finalidade == "receita")
+        return BadRequest("Categoria não permite despesas.");
 
-            // Regra 3: Valor deve ser positivo
-            if (transacao.Valor <= 0)
-                return BadRequest("O valor deve ser maior que zero.");
+    if (dto.Tipo == "receita" && categoria.Finalidade == "despesa")
+        return BadRequest("Categoria não permite receitas.");
 
-            // Criar
-            _context.Transacoes.Add(transacao);
-            await _context.SaveChangesAsync();
+    if (dto.Valor <= 0)
+        return BadRequest("Valor deve ser maior que zero.");
 
-            return Ok(transacao);
+    var transacao = new Transacao
+    {
+        Descricao = dto.Descricao,
+        Valor = dto.Valor,
+        Tipo = dto.Tipo,
+        PessoaId = dto.PessoaId,
+        CategoriaId = dto.CategoriaId
+    };
+
+    _context.Transacoes.Add(transacao);
+    await _context.SaveChangesAsync();
+
+    return Ok(transacao);
+}
+
         }
     }
-}
+

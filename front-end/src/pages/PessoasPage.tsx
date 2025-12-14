@@ -1,18 +1,29 @@
-import React from "react";
-import Header from "../components/Header";
 import PessoaForm from "../components/PessoaForm";
 import PessoaList from "../components/PessoaList";
 
-export default function PessoasPage(){
+export default function PessoasPage() {
   return (
     <>
-      <Header />
-      <main className="container mt-4">
-        <div className="row gx-3">
-          <div className="col-md-4"><PessoaForm/></div>
-          <div className="col-md-8"><PessoaList/></div>
+      <section className="hero">
+        <div>
+          <h2>Pessoas</h2>
+          <p className="text-muted">
+            Cadastre as pessoas que participarão das transações financeiras.
+          </p>
         </div>
-      </main>
+      </section>
+
+      <section className="grid cols-2 mt-4">
+        <div className="card-modern">
+          <h4>Nova Pessoa</h4>
+          <PessoaForm />
+        </div>
+
+        <div className="card-modern">
+          <h4>Pessoas Cadastradas</h4>
+          <PessoaList />
+        </div>
+      </section>
     </>
   );
 }

@@ -38,7 +38,13 @@ export default function PessoaList() {
   return (
     <div className="card p-3">
       <h5>Pessoas</h5>
+         <div className="scroll-icon d-md-none">
+      ⇆ deslize para ver mais
+    </div>
+
+    <div className="table-responsive">
       {loading ? <div>Carregando...</div> : (
+     
         <table className="table table-striped">
           <thead><tr><th>Nome</th><th>Idade</th><th style={{width:150}}>Ações</th></tr></thead>
           <tbody>
@@ -47,7 +53,7 @@ export default function PessoaList() {
                 <td>{p.nome}</td>
                 <td>{p.idade}</td>
                 <td>
-                  <button className="btn btn-sm btn-outline-primary me-2" onClick={()=>alert("Editar opcional")}>Editar</button>
+
                   <button className="btn btn-sm btn-danger" onClick={()=>remover(p.id)}>Excluir</button>
                 </td>
               </tr>
@@ -56,6 +62,7 @@ export default function PessoaList() {
           </tbody>
         </table>
       )}
+    </div>
     </div>
   );
 }

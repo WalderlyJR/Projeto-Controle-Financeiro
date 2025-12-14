@@ -44,6 +44,15 @@ export default function CategoriasPage(){
 
   return (
     <>
+    <section className="hero">
+        <div>
+          <h2>Categorias</h2>
+          <p className="text-muted">
+            Informe o nome das categorias que deseja utilizar para classificar suas receitas e despesas.
+
+          </p>
+        </div>
+      </section>
       <Header />
       <main className="container mt-4">
         <div className="row gx-3">
@@ -83,6 +92,10 @@ export default function CategoriasPage(){
           <div className="col-md-8">
             <div className="card p-3">
               <h5>Categorias</h5>
+              <div className="scroll-icon d-md-none">
+               ⇆ deslize para ver mais
+                </div>
+              <div className="table-responsive">
               <table className="table table-striped">
                 <thead><tr><th>Descrição</th><th>Finalidade</th></tr></thead>
                 <tbody>
@@ -90,6 +103,7 @@ export default function CategoriasPage(){
                   {items.length===0 && <tr><td colSpan={2}>Sem categorias</td></tr>}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>

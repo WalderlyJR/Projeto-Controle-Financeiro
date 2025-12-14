@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace projetotecnico.Models
 {
     public class Transacao
@@ -5,12 +7,16 @@ namespace projetotecnico.Models
         public int Id { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-        public string Tipo { get; set; } // "receita" ou "despesa"
+        public string Tipo { get; set; }
 
         public int CategoriaId { get; set; }
+
+        [JsonIgnore] 
         public Categoria Categoria { get; set; }
 
         public int PessoaId { get; set; }
+
+        [JsonIgnore]
         public Pessoa Pessoa { get; set; }
     }
 }
